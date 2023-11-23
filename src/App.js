@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './App.css';
 
 function App() {
   const [city, setCity] = useState('');
@@ -32,21 +33,30 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Weather App</h1>
-      <label htmlFor="city">Enter City:</label>
-      <input
-        type="text"
-        id="city"
-        placeholder="Enter city"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <button onClick={getWeather}>Get Weather</button>
+    
+    <div className="container mx-auto my-8 p-8 bg-gray-100 rounded shadow-md">
+      <h1 className="text-4xl font-bold mb-4">Weather App</h1>
+      <label htmlFor="city" className="text-lg">Enter City:</label>
+      <div className="flex">
+        <input
+          type="text"
+          id="city"
+          className="border p-2 mr-2"
+          placeholder="Enter city"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+          onClick={getWeather}
+        >
+          Get Weather
+        </button>
+      </div>
       {weather && (
-        <div>
-          <p>Temperature: {weather.temperature}°C</p>
-          <p>Description: {weather.description}</p>
+        <div className="mt-4">
+          <p className="text-lg">Temperature: {weather.temperature}°C</p>
+          <p className="text-lg">Description: {weather.description}</p>
         </div>
       )}
     </div>
